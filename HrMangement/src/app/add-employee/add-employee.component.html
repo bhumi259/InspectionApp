@@ -1,0 +1,60 @@
+<br><br><br>
+<div class="row">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <div class="row">
+      <h3 class="text-center"> Create Employee </h3>
+      <hr />
+      <div class="card-body">
+        <form [formGroup]="checkForm" (ngSubmit)="onSubmit()">
+          <label for="id">Id:</label><br>
+          <input type="text" formControlName="id">
+
+
+          <br>
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" formControlName="name" minlength="5"><br>
+          <span *ngIf="checkForm.get('name').hasError('required')" style="color: RED;">
+            * name is required
+         </span>
+         <span *ngIf="checkForm.get('name').hasError('pattern')" style="color: RED;">
+          * name Not valid.
+       </span>
+       <span *ngIf="checkForm.get('name').hasError('minlength')" style="color: RED;">
+        * name length
+     </span><br>
+
+          <label for="email">Email :</label><br>
+          <input type="text" id="email" formControlName="email"><br>
+          <span *ngIf="checkForm.get('email').hasError('required')" style="color: RED;">
+            * email is required
+         </span>
+         <span *ngIf="checkForm.get('email').hasError('email')" style="color: RED;">
+          * email Not valid format
+       </span><br>
+          <label for="mobile">Mobile No:</label><br>
+          <input type="text" id="mobile" minlength="10" maxlength="10" formControlName="mobile"><br>
+          <span *ngIf="checkForm.get('mobile').hasError('required')" style="color: RED;">
+            * mobile Length
+         </span>
+         <span *ngIf="checkForm.get('mobile').hasError('pattern')" style="color: RED;">
+          * mobile Not valid.
+       </span>
+          <span *ngIf="checkForm.get('mobile').hasError('minlength')" style="color: RED;">
+            * mobile Length
+         </span>
+         <span *ngIf="checkForm.get('mobile').hasError('maxlength')" style="color: RED;">
+          * mobile max Length
+       </span>
+          <br>
+          <label for="gender">Gender:</label><br>
+          <input type="text" id="gender" formControlName="gender"><br>
+          <span *ngIf="checkForm.get('gender').hasError('required')" style="color: RED;">
+            * gender is required
+         </span><br>
+          <br />
+          <button [routerLink]="['/show']" class="btn btn-warning">Back</button>&nbsp;
+          <button class="btn btn-success" type="submit" [disabled]="!checkForm.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>

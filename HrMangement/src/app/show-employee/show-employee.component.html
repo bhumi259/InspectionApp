@@ -1,0 +1,38 @@
+<br><br><br>
+<div class="card col-md-6 offset-md-3 offset-md-3">
+  <div class="card-body">
+    <h2>Employee List</h2>
+    <br>
+    <button [routerLink]="['/add']" class="btn btn-primary">Add</button>
+    <br />
+    <br />
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">MobileNo.</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Action</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeList">
+          <th scope="row">{{ employee.id }}</th>
+
+          <td> {{ employee.name | uppercase }}</td>
+          <td> {{ employee.email }} </td>
+          <td> {{ employee.mobile }}</td>
+          <td>{{ employee.gender }} </td>
+          <td>
+            <button [routerLink]="['/edit',employee.id]" class="btn btn-primary">Edit</button>
+          </td>
+          <!-- <button  [routerLink]="['/edit',employee.id]" class="btn btn-primary">Edit</button></td> -->
+          <td> <button type="button" class="btn btn-danger" (click)="remove(employee.id)"> Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
